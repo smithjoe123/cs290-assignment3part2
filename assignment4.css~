@@ -1,0 +1,2 @@
+#gists {background-color: blue; width: 50%; float:left}
+#favorites {background-color:yellow; width: 50%; }

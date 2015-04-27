@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html>
+
+
+	<head>
+
+		<meta charset="utf-8">
+		<title>Title</title>
+
+		<link rel="stylesheet" type="text/css" href="assignment4.css" />
+
+	</head>
+
+
+
+	<body>
+
+		<script>
+
+
+			var gists; // = [];
+
+			function getGists()
+			{
+	
+				var request = new XMLHttpRequest();
+			
+				if(!request)
+				{
+					throw 'Unable to create HttpRequest.';
+				}
+
+				var url = 'https://api.github.com/gists/public';
+				//var url = 'https://api.github.com/gists/users/:smithjoe123/gists';
+
+				
+				
+
+				request.onreadystatechange = function()
+				{
+
+					if(this.readyState == 4)
+					{
+
+						
+						//console.log(this.responseText);
+						
+
+						var txt = this.responseText.trim("\"");
+
+						gists = JSON.parse(txt);
+
+						
+
+						displayGists();
+
+						
+
+						
+
+						
+						
+						
+						
+						
+
+						
+
+					}
+				};
+
+				request.open('GET', url);
+
+				request.send();
+
+			}
+
+
+			function displayGists()
+			{
+
+				for (var i = 0; i < 30; i++)
+				{
+
+					var br1 = document.createElement("br");
+					var br2 = document.createElement("br");
+					var br3 = document.createElement("br");
+
+					var button = document.createElement('button');
+					button.setAttribute("gistIdButton", gists[i].id);
+					button.innerHTML = 'add to favorites';
+					button.onclick = function(){
+						//localStorage.setItem("item2",gists[i].url);
+						//var storeurl = gists[i].url;
+						//var storedescription = gists[i].description;
+						//localStorage.setItem("fdfd", i);
+    						//localStorage.setItem("item23",3);
+						//return false;
+
+						//var favoritesList = document.getElementById('favorites');
+						var nodef = document.getElementById(this.getAttribute("gistIdButton"));
+						//var nodef = document.createElement("LI");   
+						//var textnodef = document.createTextNode(gists[i].description);
+						//var textnodeAddressf = document.createTextNode(gists[i].url);
+						//var br1f = document.createElement("br");
+						//var br2f = document.createElement("br");
+						//var br3f = document.createElement("br");  
+						//nodef.appendChild(textnode); 
+						//nodef.appendChild(br1); 
+						//nodef.appendChild(textnodeAddress); 
+						//nodef.appendChild(br2);
+						//nodef.appendChild(button);
+						//nodef.appendChild(br3);
+						favoritesList.appendChild(nodef);
+ 						 }
+
+					var gistsList = document.getElementById('gistsList');
+					var node = document.createElement("LI");   
+					//var textnode = document.createTextNode("Water");  
+					var textnode = document.createTextNode(gists[i].description);
+					//textnode.setAttribute("gistId", gists[i].id);
+					var textnodeAddress = document.createTextNode(gists[i].url);  
+					node.setAttribute("gistId", gists[i].id);
+					node.appendChild(textnode); 
+					node.appendChild(br1); 
+					node.appendChild(textnodeAddress); 
+					node.appendChild(br2);
+					node.appendChild(button);
+					node.appendChild(br3); 
+					gistsList.appendChild(node);
+
+
+					
+					console.log("dfdfz");
+					
+
+					//gists[i].description
+
+
+				}
+
+
+			}
+
+			function displayFavorites()
+			{
+
+			}
+
+			getGists();
+
+			
+
+			
+
+			console.log(gists);
+
+			//console.log(gists[0].user);
+				
+
+	</script>
+
+	<form action="" method="">
+
+		<input type="checkbox" name="python">Python
+
+		<input type="checkbox" name="json">JSON
+
+		<input type="checkbox" name="javascript">JavaScript
+
+		<input type="checkbox" name="sql">SQL
+
+		<br>
+		
+		<button type="button">Search</button>
+
+		<br>
+
+		<br>
+
+		<div id="gists"> gists
+
+			<br>
+
+			<ul id="gistsList">
+
+			</ul>
+
+		</div>
+
+		<div id="favorites"> favorites
+
+			<br>
+
+			<ul id="favoritesList">
+
+			</ul>
+
+		</div>
+
+	</form>
+
+	</body>
+</html>
+
+		
+
