@@ -91,28 +91,15 @@
 					button.setAttribute("gistIdButton", gists[i].id);
 					button.innerHTML = 'add to favorites';
 					button.onclick = function(){
-						//localStorage.setItem("item2",gists[i].url);
-						//var storeurl = gists[i].url;
-						//var storedescription = gists[i].description;
-						//localStorage.setItem("fdfd", i);
-    						//localStorage.setItem("item23",3);
-						//return false;
-
-						//var favoritesList = document.getElementById('favorites');
-						var nodef = document.getElementById(this.getAttribute("gistIdButton"));
-						//var nodef = document.createElement("LI");   
-						//var textnodef = document.createTextNode(gists[i].description);
-						//var textnodeAddressf = document.createTextNode(gists[i].url);
-						//var br1f = document.createElement("br");
-						//var br2f = document.createElement("br");
-						//var br3f = document.createElement("br");  
-						//nodef.appendChild(textnode); 
-						//nodef.appendChild(br1); 
-						//nodef.appendChild(textnodeAddress); 
-						//nodef.appendChild(br2);
-						//nodef.appendChild(button);
-						//nodef.appendChild(br3);
+						
+						
+						var nodef = document.getElementById(this.getAttribute("gistIdButton")).cloneNode(true);
+						console.log(this.getAttribute("gistIdButton"));
 						favoritesList.appendChild(nodef);
+
+						localStorage.setItem(nodef., "Smith");
+
+						return false;
  						 }
 
 					var gistsList = document.getElementById('gistsList');
@@ -121,7 +108,8 @@
 					var textnode = document.createTextNode(gists[i].description);
 					//textnode.setAttribute("gistId", gists[i].id);
 					var textnodeAddress = document.createTextNode(gists[i].url);  
-					node.setAttribute("gistId", gists[i].id);
+					//node.setAttribute("gistId", gists[i].id);
+					node.setAttribute("id", gists[i].id);
 					node.appendChild(textnode); 
 					node.appendChild(br1); 
 					node.appendChild(textnodeAddress); 
